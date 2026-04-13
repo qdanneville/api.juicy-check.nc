@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { db } from './lib/db/drizzle';
-import { users } from './lib/db/schema';
+import { user } from './lib/db/schema';
 
 @Injectable()
 export class AppService {
@@ -9,7 +9,7 @@ export class AppService {
   }
 
   async getUsers(): Promise<any[]> {
-    const usersList = await db.select().from(users).limit(10);
+    const usersList = await db.select().from(user).limit(10);
     console.log('usersList', usersList);
     return usersList;
   }
